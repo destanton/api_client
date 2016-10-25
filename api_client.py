@@ -1,18 +1,20 @@
 import requests
 
-print("Welcome to the Star Wars Database")
+print("""
+ ######  ########    ###    ########     ##      ##    ###    ########   ######
+##    ##    ##      ## ##   ##     ##    ##  ##  ##   ## ##   ##     ## ##    ##
+##          ##     ##   ##  ##     ##    ##  ##  ##  ##   ##  ##     ## ##
+ ######     ##    ##     ## ########     ##  ##  ## ##     ## ########   ######
+      ##    ##    ######### ##   ##      ##  ##  ## ######### ##   ##         ##
+##    ##    ##    ##     ## ##    ##     ##  ##  ## ##     ## ##    ##  ##    ##
+ ######     ##    ##     ## ##     ##     ###  ###  ##     ## ##     ##  ######
+""")
 
 
 def Welcome():
-        choice = input("What do you want to search for? people / planets / starships: ")
+        choice = input("What do you want to search for? people / planets / starships: ").lower()
         if choice == "people" or choice == "starships" or choice == "planets":
             get_data(choice)
-        # elif choice == "starships":
-        #     ship_id =
-        #     # input("Which Starship number do you want to search by? ")
-        #     starships(ship_id)
-        # elif choice == "planets":
-        #     pass
 
 
 def planets(planet_id):
@@ -74,7 +76,7 @@ def get_data(endpoint, lookup="name"):
         for character in json_result["results"]:
             print(character[lookup])
             print(character["url"])
-        choice = input("\nPress 'Enter' to continue listing or search by [C]hracter ID, [S]hip ID, or [P]lanet ID ").lower()
+        choice = input("\nPress 'Enter' to continue listing or search by [C]haracter ID, [S]hip ID, or [P]lanet ID ").lower()
         if choice == "c":
             character_id = input("\nWhich Character number do you want to search By(1-87): ")
             get_character_info(character_id)
@@ -82,7 +84,7 @@ def get_data(endpoint, lookup="name"):
             ship_id = input("\nWhich Ship ID do do you want to search by? ")
             starships(ship_id)
         elif choice == "p":
-            planet_id = input("\nWhich Planet ID do do you want to search by? ")
+            planet_id = input("\nWhich Planet ID do you want to search by? ")
             planets(planet_id)
         url = json_result["next"]
 
